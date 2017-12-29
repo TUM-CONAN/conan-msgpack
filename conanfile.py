@@ -26,6 +26,7 @@ class MsgpackConan(ConanFile):
     def build(self):
         cmake = CMake(self)
         cmake.definitions["BUILD_SHARED_LIBS"] = self.options.shared
+        cmake.definitions["MSGPACK_CXX11"] = True
         cmake.configure(source_dir="source")
         cmake.build()
         cmake.install()
