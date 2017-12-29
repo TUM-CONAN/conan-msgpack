@@ -1,4 +1,4 @@
-from conans import ConanFile, tools
+from conans import ConanFile, CMake, tools
 
 import os
 
@@ -9,6 +9,11 @@ class MsgpackConan(ConanFile):
     license = "https://raw.githubusercontent.com/msgpack/msgpack-c/master/COPYING"
     url = "https://github.com/ulricheck/conan-msgpack"
     description = "The official C++ library for MessagePack"
+    settings = "os", "compiler", "build_type", "arch"
+    options = {"shared": [True, False]}
+    default_options = "shared=False"
+    generators = "cmake"
+
     
     def source(self):
         source_url = "https://github.com/msgpack/msgpack-c/releases/download"
@@ -16,19 +21,19 @@ class MsgpackConan(ConanFile):
         tools.get("{0}/cpp-{1}/{2}.tar.gz"
             .format(source_url,  self.version, archive_name))
             
-        os.rename(archive_name, "sources")
+        os.rename(archive_name, "source")
         
     def build(self):
-        pass # silence warning
+        cmake = CMake(self)
+        cmake.definitions["BUILD_SHARED_LIBS"] = self.options.shared
+        cmake.configure(source_dir="source")
+        cmake.build()
+        cmake.install()
 
     def package(self):
-        include_dir = os.path.join("sources", "include")
-        self.copy("*.h", dst="include", src=include_dir)
-        self.copy("*.hpp", dst="include", src=include_dir)
+        pass
 
     def package_info(self):
         self.cpp_info.includedirs.append(os.path.join(self.package_folder, "include"))
-
-    def package_id(self):
-        self.info.header_only()
+        self.cpp_info.libs = tools.collect_libs(self)
 
