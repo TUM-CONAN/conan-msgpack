@@ -33,7 +33,7 @@ matrix:
 
 before_script:
   # See https://github.com/travis-ci/travis-ci/issues/4704. If this gets fixed, this line can also be removed. 
-  - python3 -c 'import os,sys,fcntl; flags = fcntl.fcntl(sys.stdout, fcntl.F_GETFL); fcntl.fcntl(sys.stdout, fcntl.F_SETFL, flags&~os.O_NONBLOCK);'
+  - python -c 'import os,sys,fcntl; flags = fcntl.fcntl(sys.stdout, fcntl.F_GETFL); fcntl.fcntl(sys.stdout, fcntl.F_SETFL, flags&~os.O_NONBLOCK);'
 
 install:
   - chmod +x .travis/install.sh
