@@ -2,20 +2,18 @@
 
 [Conan.io](https://conan.io) package for [the msgpack C++ library](https://github.com/msgpack/msgpack-c) project
 
-The packages generated with this **conanfile** can be found in [Bintray](https://bintray.com/tum-ubitrack/public-conan/msgpack%3Aulricheck).
-
 ## For Users: Use this package
 
 ### Basic setup
 
-    $ conan install msgpack/2.1.5@ulricheck/stable
+    $ conan install msgpack/2.1.5@camposs/stable
 
 ### Project setup
 
 If you handle multiple dependencies in your project is better to add a *conanfile.txt*
 
     [requires]
-    msgpack/2.1.5@ulricheck/stable
+    msgpack/2.1.5@camposs/stable
 
     [generators]
     txt
@@ -36,15 +34,15 @@ This is a header only library, so nothing needs to be built.
 
 ## Package 
 
-    $ conan create ulricheck/testing
+    $ conan create camposs/stable
 	
 ## Add Remote
 
-	$ conan remote add tum-ubitrack "https://api.bintray.com/conan/tum-ubitrack/public-conan"
+	$ conan remote add camp "https://conan.campar.in.tum.de" True
 
 ## Upload
 
-    $ conan upload msgpack/2.1.5@ulricheck/stable -r tum-ubitrack
+    $ conan upload -r camp msgpack/2.1.5@camposs/stable
 
 ### License
-[Boost](https://raw.githubusercontent.com/msgpack/msgpack-c/master/COPYING)
+[License](https://raw.githubusercontent.com/msgpack/msgpack-c/master/COPYING)
