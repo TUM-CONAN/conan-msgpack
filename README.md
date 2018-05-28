@@ -2,6 +2,10 @@
 
 [Conan.io](https://conan.io) package for [the msgpack C++ library](https://github.com/msgpack/msgpack-c) project
 
+## Add Remote
+
+    $ conan remote add camposs "https://conan.campar.in.tum.de/api/conan/conan-camposs"
+
 ## For Users: Use this package
 
 ### Basic setup
@@ -26,7 +30,7 @@ Note: It is recommended that you run conan install from a build directory and no
 
 ## For Packagers: Publish this Package
 
-The example below shows the commands used to publish to ulricheck conan repository. To publish to your own conan respository (for example, after forking this git repository), you will need to change the commands below accordingly. 
+The example below shows the commands used to publish to campar conan repository. To publish to your own conan respository (for example, after forking this git repository), you will need to change the commands below accordingly. 
 
 ## Build  
 
@@ -34,15 +38,11 @@ This is a header only library, so nothing needs to be built.
 
 ## Package 
 
-    $ conan create camposs/stable
-	
-## Add Remote
-
-	$ conan remote add camp "https://conan.campar.in.tum.de" True
+    $ conan create . camposs/stable	
 
 ## Upload
 
-    $ conan upload -r camp msgpack/2.1.5@camposs/stable
+    $ conan upload -r camposs msgpack/2.1.5@camposs/stable
 
 ### License
 [License](https://raw.githubusercontent.com/msgpack/msgpack-c/master/COPYING)
