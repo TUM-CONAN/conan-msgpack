@@ -39,11 +39,7 @@ class MsgpackConan(ConanFile):
     def package_info(self):
         self.cpp_info.includedirs.append(os.path.join(self.package_folder, "include"))
         
-        libs = tools.collect_libs(self)
-        self.output.info("LIBS: %s" % ",".join(libs))
-        if self.settings.os == "Linux":
-            self.cpp_info.libs = [l for l in libs if l.endswith('.so')]
-        else:
-            self.cpp_info.libs = libs
+        self.cpp_info.libs = list(set(tools.collect_libs(self))) # Remove duplicates from list
+        self.output.info("LIBRARIES: %s" % ",".join(self.cpp_info.libs))
 
 
