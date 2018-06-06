@@ -14,9 +14,6 @@ class MsgpackConan(ConanFile):
     default_options = "shared=False"
     generators = "cmake"
 
-    def configure(self):
-        del self.settings.compiler.libcxx
-    
     def source(self):
         source_url = "https://github.com/msgpack/msgpack-c/releases/download"
         archive_name = self.name + "-" + self.version
