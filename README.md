@@ -10,14 +10,14 @@
 
 ### Basic setup
 
-    $ conan install msgpack/2.1.5@camposs/stable
+    $ conan install msgpack/3.2.0@camposs/stable
 
 ### Project setup
 
 If you handle multiple dependencies in your project is better to add a *conanfile.txt*
 
     [requires]
-    msgpack/2.1.5@camposs/stable
+    msgpack/3.2.0@camposs/stable
 
     [generators]
     txt
@@ -42,7 +42,7 @@ This is a header only library, so nothing needs to be built.
 
 ## Upload
 
-    $ conan upload -r camposs msgpack/2.1.5@camposs/stable
+    $ conan upload -r camposs msgpack/3.2.0@camposs/stable
 
 ### License
 [License](https://raw.githubusercontent.com/msgpack/msgpack-c/master/COPYING)
